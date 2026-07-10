@@ -288,40 +288,6 @@ Static build sudah di-patch dengan **relative paths** (`./_next/...`) sehingga b
 
 ---
 
-## ❓ FAQ & Troubleshooting
-
-### Q: Bagaimana cara ganti URL Google Apps Script?
-
-**A:** Edit file `config.js`, ubah `appsScriptUrl` dengan URL Web App Anda (akhiri dengan `/exec`). Simpan, selesai — tidak perlu rebuild.
-
-### Q: Login gagal, padahal registrasi berhasil?
-
-**A:** Pastikan Anda sudah **redeploy Apps Script** dengan kode terbaru dari `google-apps-script.js` (yang sudah fix case-insensitive email). Deploy → Manage deployments → Edit → New version → Deploy.
-
-### Q: Tampilan berantakan saat di-upload ke GitHub Pages?
-
-**A:** Static build sudah di-patch dengan relative paths (`./_next/...`), jadi berfungsi di subpath. Pastikan Anda upload **isi folder `out/`**, bukan folder `out/` itu sendiri.
-
-### Q: Bagaimana mengaktifkan mode pengujian (semua level terbuka)?
-
-**A:** Edit `config.js`, set `devMode: true`. Simpan, refresh aplikasi.
-
-### Q: Tombol back di Android langsung exit, bukan kembali?
-
-**A:** Sudah diperbaiki di versi 2.1. Back button sekarang kembali ke screen sebelumnya. Hanya exit saat di Home/Onboarding. Pastikan Anda pakai zip terbaru.
-
-### Q: Bagaimana ganti link "dapatkan kode akses"?
-
-**A:** Edit `config.js`, ubah `accessCodeUrl` dengan link Anda (wa.me, website, dll).
-
-### Q: Bisakah dipakai offline?
-
-**A:** Ya, setelah dibuka sekali, aplikasi ter-cache oleh service worker dan bisa dipakai offline. Untuk install di HP: buka di Chrome → menu → "Add to Home Screen".
-
-### Q: Data user disimpan dimana?
-
-**A:** Progress belajar & profil disimpan di localStorage browser. Data login disimpan di Google Sheets (via Apps Script). Tidak ada server khusus.
-
 ---
 
 ## 📜 Lisensi & Credits
