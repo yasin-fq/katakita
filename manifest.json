@@ -13,7 +13,7 @@
   "categories": ["education", "kids", "books"],
   "icons": [
     {
-      "src": "favicon.svg",
+      "src": "katakita-owl.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

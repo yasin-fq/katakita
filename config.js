@@ -25,6 +25,16 @@ window.KATAKITA_CONFIG = {
   // Ganti dengan URL Anda!
   appsScriptUrl: "https://script.google.com/macros/s/AKfycbzLeQjLPp4jEfw7SwNiADtrUv72YD5B9mFWW6SNiv9VtNNnvaCxCLZxUDUAV9u3bWG7/exec",
 
+  // Mode Pengujian: ON (true) / OFF (false)
+  // Saat ON: semua level & pelajaran terbuka (tanpa perlu selesaikan level sebelumnya)
+  // Saat OFF: level terkunci sampai selesaikan level sebelumnya (default)
+  devMode: false,
+
+  // Link untuk mendapatkan kode akses (tampil di halaman pendaftaran)
+  // Ganti dengan link Anda (lynk.id, wa.me, website, dll)
+  // Default: https://lynk.id/qafstudio
+  accessCodeUrl: "https://lynk.id/qafstudio",
+
   // Opsional: pesan custom saat login gagal
   // loginErrorMessage: "Login gagal. Hubungi admin.",
 };
