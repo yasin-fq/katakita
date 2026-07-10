@@ -105,8 +105,6 @@ Login opsional dengan **gate** (pintu masuk) yang hanya muncul saat user belum l
 
 ## 🚀 Cara Menjalankan
 
-### Opsi 1: Versi Static (Termudah — Tanpa Install)
-
 **Untuk pengguna akhir:**
 
 1. Download `katakita-static-deploy.zip`
@@ -119,29 +117,6 @@ Login opsional dengan **gate** (pintu masuk) yang hanya muncul saat user belum l
 **Untuk deploy ke hosting:**
 - Upload isi folder ke hosting static (Netlify, Vercel, GitHub Pages, Cloudflare Pages)
 - Tidak butuh server Node.js
-
-### Opsi 2: Versi Development (Untuk Developer)
-
-**Prasyarat:** Node.js 18+ atau Bun
-
-```bash
-# Install dependencies
-bun install
-
-# Jalankan dev server
-bun run dev
-# Buka http://localhost:3000
-
-# Build production (static export)
-bun run build
-# Hasil di folder out/
-
-# Lint
-bun run lint
-
-# Generate ikon PWA dari logo SVG
-bun run scripts/gen-icons.mjs
-```
 
 ---
 
@@ -192,26 +167,7 @@ Sistem login menggunakan **Google Sheets + Google Apps Script** sebagai database
    ```javascript
    appsScriptUrl: "https://script.google.com/macros/s/AKfycb.../exec",
    ```
-
-### Generate Kode Akses
-
-Kode akses adalah 20 karakter alfanumerik yang user masukkan saat registrasi. Generate di Apps Script:
-
-```javascript
-function generateAccessCodes() {
-  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  for (var i = 0; i < 10; i++) {
-    var code = "";
-    for (var j = 0; j < 20; j++) {
-      code += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    Logger.log(code);
-  }
-}
-```
-
-Distribusikan kode via lynk.id, WhatsApp, atau platform lain.
-
+   
 ### Cara Kerja Gate Login
 
 ```
@@ -287,70 +243,6 @@ Static build sudah di-patch dengan **relative paths** (`./_next/...`) sehingga b
 
 ---
 
-## 📂 Struktur Proyek
-
-```
-katakita/
-├── public/
-│   ├── katakita-owl.svg        # Logo owl (utama)
-│   ├── config.js               # Konfigurasi (appsScriptUrl, devMode, accessCodeUrl)
-│   ├── favicon.ico/svg/png     # Favicon semua format
-│   ├── icon-192/512.png        # PWA icons
-│   ├── manifest.json           # PWA manifest
-│   ├── sw.js                   # Service worker (cache v1.3.0)
-│   └── offline.html            # Fallback offline
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx          # Root layout + metadata PWA + favicon + config.js loader
-│   │   ├── page.tsx            # Entry → AppShell
-│   │   └── globals.css
-│   ├── components/
-│   │   ├── app-shell.tsx       # Router screen + Android back button history
-│   │   ├── screens/            # 14 screen aplikasi
-│   │   │   ├── onboarding.tsx
-│   │   │   ├── home.tsx        # 6 quick access + 6 level cards
-│   │   │   ├── level-detail.tsx
-│   │   │   ├── certificate.tsx
-│   │   │   ├── reading-library.tsx      # Perpustakaan Cerita (gate di pilih cerita)
-│   │   │   ├── syllable-builder.tsx     # Suku Kata Builder
-│   │   │   ├── daily-challenge.tsx
-│   │   │   ├── parent-dashboard.tsx
-│   │   │   ├── profile-manager.tsx      # Gate login
-│   │   │   ├── auth-portal.tsx          # Login/register + gate
-│   │   │   ├── writing-practice.tsx     # Gate login
-│   │   │   ├── alphabet-chart.tsx       # Gate login
-│   │   │   ├── syllable-chart.tsx       # Gate login
-│   │   │   ├── practice.tsx
-│   │   │   ├── badges.tsx
-│   │   │   └── settings.tsx             # Akun + Logout
-│   │   ├── games/              # 4 mini-games
-│   │   │   ├── games-hub.tsx             # Gate di pilih game
-│   │   │   ├── memory-game.tsx
-│   │   │   ├── matching-game.tsx
-│   │   │   └── spelling-game.tsx
-│   │   ├── lesson/             # Lesson player + quiz
-│   │   ├── pwa/                # PWA register + install prompt
-│   │   └── ui/ + ui-custom/    # shadcn/ui + komponen kustom
-│   └── lib/
-│       ├── curriculum/         # Data kurikulum 6 level + stories
-│       │   ├── level1.ts ... level5.ts
-│       │   ├── level4-special.ts
-│       │   └── stories.ts      # 10 cerita perpustakaan
-│       ├── store.ts            # Zustand store (v4, multi-profil, devMode config)
-│       ├── auth.ts             # Helper login (isLoggedIn, setAuthUser, logout)
-│       ├── use-require-login.ts # Hook gate login
-│       ├── tts.ts              # Text-to-Speech Indonesia
-│       ├── sounds.ts           # Efek suara Web Audio
-│       ├── game-scores.ts      # Skor game localStorage
-│       └── word-of-day.ts      # Kata hari ini
-├── scripts/
-│   └── gen-icons.mjs           # Generate ikon PWA dari owl SVG
-├── google-apps-script.js       # Backend login (deploy ke Google Sheets)
-├── SETUP-GOOGLE-APPS-SCRIPT.md # Panduan setup login lengkap
-├── Caddyfile                   # Gateway config
-├── next.config.ts              # output: "export" (static)
-└── package.json
-```
 
 ---
 
