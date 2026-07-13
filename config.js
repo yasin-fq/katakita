@@ -33,7 +33,7 @@ window.KATAKITA_CONFIG = {
   // Link untuk mendapatkan kode akses (tampil di halaman pendaftaran)
   // Ganti dengan link Anda (lynk.id, wa.me, website, dll)
   // Default: https://lynk.id/qafstudio
-  accessCodeUrl: "https://lynk.id/qafstudio",
+  accessCodeUrl: "https://lynk.id/qafstudio/o7d0pzlrjp6n/checkout",
 
   // Opsional: pesan custom saat login gagal
   // loginErrorMessage: "Login gagal. Hubungi admin.",
